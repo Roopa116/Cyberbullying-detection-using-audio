@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Bullying Case</title>
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body background and font settings */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* Container styling */
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Title styling */
+h2 {
+    color: #2a9d8f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Form label styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Form input field styling */
+input[type="text"], input[type="email"], textarea, input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Textarea adjustment */
+textarea {
+    resize: vertical;
+}
+
+/* Button styling */
+button {
+    background-color: #2a9d8f;
+    color: white;
+    font-size: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #219b83;
+}
+
+/* Optional file input customization */
+input[type="file"] {
+    padding: 5px;
+    background-color: #e6f7f0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    
+    button {
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Report a Bullying Case</h2>
+        <form action="{{ url_for('report') }}" method="post">
+            <label for="username">Your Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="report_reason">Reason for Reporting:</label>
+            <textarea id="report_reason" name="report_reason" rows="4" required></textarea>
+
+            <label for="evidence">Upload Evidence (Optional):</label>
+            <input type="file" id="evidence" name="evidence">
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+</body>
+</html>

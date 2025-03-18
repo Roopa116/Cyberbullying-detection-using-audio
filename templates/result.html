@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - VoiceShield</title>
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #f4a261;
+}
+
+/* Main content styling */
+main {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.result-section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+}
+
+h2 {
+    color: #2a9d8f;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Text styling */
+p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+strong {
+    color: #333;
+}
+
+/* Bullying classification */
+.bullying {
+    color: #e76f51;
+    font-weight: bold;
+}
+
+.not-bullying {
+    color: #2a9d8f;
+    font-weight: bold;
+}
+
+/* Alerts and messages */
+.alert {
+    background-color: #fddfdf;
+    color: #e76f51;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-weight: bold;
+    border: 1px solid #e76f51;
+}
+
+.safe-message {
+    background-color: #d1f7d1;
+    color: #2a9d8f;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 20px;
+    font-weight: bold;
+    border: 1px solid #2a9d8f;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    background-color: #2a9d8f;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #219b83;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}
+</style>
+</head>
+<body>
+    <header>
+        <h1>VoiceShield - Prediction Result</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="result-section">
+            <h2>Prediction Details</h2>
+            <p><strong>Transcribed Text:</strong> {{ transcribed_text }}</p>
+            <p><strong>Classification:</strong> 
+                <span class="{% if classification == 'Bullying' %}bullying{% else %}not-bullying{% endif %}">
+                    {{ classification }}
+                </span>
+            </p>
+            <p><strong>Keywords Matched:</strong> {{ matched_keywords }}</p>
+
+            {% if classification == "Bullying" %}
+                <div class="alert">
+                    ⚠️ This content may be considered cyberbullying.
+                </div>
+            {% else %}
+                <div class="safe-message">
+                    ✅ No harmful content detected.
+                </div>
+            {% endif %}
+
+            <a href="{{ url_for('dashboard') }}" class="btn">Go to Dashboard</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 VoiceShield. All rights reserved.</p>
+    </footer>
+</body>
+</html>
