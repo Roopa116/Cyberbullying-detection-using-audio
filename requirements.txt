@@ -3,3 +3,15 @@ scikit-learn
 numpy
 pandas
 gunicorn
+Flask
+Flask-MySQLdb
+mysql-connector-python
+MySQL-python  # Alternative if MySQLdb is used (though Flask-MySQLdb often suffices)
+werkzeug
+flask-login
+pydub
+whisper
+pandas
+librosa
+soundfile
+uuid
