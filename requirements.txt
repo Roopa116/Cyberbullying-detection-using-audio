@@ -6,7 +6,7 @@ gunicorn
 Flask
 Flask-MySQLdb
 mysql-connector-python
-MySQL-python  # Alternative if MySQLdb is used (though Flask-MySQLdb often suffices)
+mysqlclient
 werkzeug
 flask-login
 pydub
