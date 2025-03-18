@@ -12,6 +12,7 @@ from flask_mysqldb import MySQL
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask import Flask, render_template, request, redirect, session, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"
@@ -243,8 +244,9 @@ def load_user(user_id):
     if user:
         return User(id=user["id"], username=user["username"], email=user["email"], role=user["role"])
     return None
+@app.route('/')
+def home():
+    return "Cyberbullying Detection Running on Replit!"
 
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)
